@@ -1,0 +1,24 @@
+#!/bin/bash
+set -e
+
+# Install git + Node LTS for the ec2-user
+dnf update -y
+dnf install -y git
+
+su - ec2-user <<'EOF'
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+export NVM_DIR="$HOME/.nvm"; source "$NVM_DIR/nvm.sh"
+nvm install --lts
+npm install -g pm2
+
+# Clone & start the app
+git clone https://github.com/mymubarakedu-hub/kids-games.git ~/app
+cd ~/app
+npm install
+pm2 start npm --name myapp -- run start
+pm2 save
+EOF
+
+# Make pm2 start on reboot (run as root, target ec2-user)
+env PATH=$PATH:/home/ec2-user/.nvm/versions/node/$(ls /home/ec2-user/.nvm/versions/node)/bin \
+  /home/ec2-user/.nvm/versions/node/*/lib/node_modules/pm2/bin/pm2 startup systemd -u ec2-user --hp /home/ec2-user
