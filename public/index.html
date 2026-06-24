@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#ff7eb3" />
+    <title>Kids Learning Playground 🎈</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="topbar">
+        <a href="#/" class="brand">🎈 Learning Playground</a>
+      </header>
+      <main id="view" class="view"><!-- routed content --></main>
+    </div>
+
+    <!-- Game engine client + dynamic component registry -->
+    <script src="/core/api.js"></script>
+    <script src="/core/router.js"></script>
+    <script src="/core/game-ui.js"></script>
+    <!-- Each game self-registers into window.GameComponents -->
+    <script src="/games/alphabet-recognition.game.js"></script>
+    <script src="/games/number-recognition.game.js"></script>
+    <script src="/games/color-recognition.game.js"></script>
+    <script src="/games/shape-recognition.game.js"></script>
+    <script src="/games/vehicle-recognition.game.js"></script>
+    <script src="/games/animal-recognition.game.js"></script>
+    <script src="/games/fruit-recognition.game.js"></script>
+    <script src="/games/weather-recognition.game.js"></script>
+    <script src="/games/emotion-recognition.game.js"></script>
+    <script src="/games/bodypart-recognition.game.js"></script>
+    <script src="/games/counting.game.js"></script>
+    <script src="/games/memory-match.game.js"></script>
+    <script src="/games/tap-the-one.game.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
