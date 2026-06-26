@@ -1,0 +1,8 @@
+# The app is now a pure static site: the whole game engine runs in the browser
+# (public/core/engine.js), so there is nothing to build and no server to run.
+# Point Netlify at the public/ folder and it serves index.html at the root —
+# which fixes the "Page not found" error.
+[build]
+  publish = "public"
+  # No build step needed. (Drag-and-drop deploys: set the publish dir to "public".)
+  command = ""
